@@ -1,0 +1,11 @@
+apiVersion: bigquery.gcp.upbound.io/v1beta2
+kind: Dataset
+metadata:
+  name: oneaccess
+spec:
+  forProvider:
+    access:
+    - role: roles/bigquery.admin
+      userByEmail: martinflemingdev@gmail.com
+    description: This is a test description
+    location: EU

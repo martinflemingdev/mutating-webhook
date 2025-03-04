@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mutating-webhook
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mutating-webhook
+  template:
+    metadata:
+      labels:
+        app: mutating-webhook
+    spec:
+      containers:
+      - name: mutating-webhook
+        image: my-mutating-webhook:v3  # Use the correct image version
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8443
+        volumeMounts:
+        - name: tls-certs
+          mountPath: "/etc/webhook/certs"
+          readOnly: true
+      volumes:
+      - name: tls-certs
+        secret:
+          secretName: mutating-webhook-tls  # Mounts the TLS secret

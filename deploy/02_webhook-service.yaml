@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mutating-webhook
+  namespace: default
+spec:
+  ports:
+  - protocol: TCP
+    port: 443
+    targetPort: 8443
+  selector:
+    app: mutating-webhook

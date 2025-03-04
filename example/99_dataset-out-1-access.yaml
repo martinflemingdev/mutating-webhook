@@ -1,0 +1,19 @@
+apiVersion: bigquery.gcp.upbound.io/v1beta2
+kind: Dataset
+metadata:
+  name: mutated
+spec:
+  forProvider:
+    access:
+    - role: OWNER
+      userByEmail: crossplane@axial-life-395119.iam.gserviceaccount.com
+    - role: OWNER
+      specialGroup: projectOwners
+    - role: READER
+      specialGroup: projectReaders
+    - role: WRITER
+      specialGroup: projectWriters
+    - role: roles/bigquery.admin
+      userByEmail: martinflemingdev@gmail.com
+    description: This is a test description
+    location: EU

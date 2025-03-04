@@ -1,0 +1,8 @@
+apiVersion: bigquery.gcp.upbound.io/v1beta2
+kind: Dataset
+metadata:
+  name: noaccess
+spec:
+  forProvider:
+    description: This is a test description
+    location: EU
